@@ -26,6 +26,10 @@ def gate_check(text: str) -> bool:
         return False
     if not text.strip():
         return False
+    # No leading or trailing whitespace: the entry must be exactly
+    # the intended line, with nothing extra around it.
+    if text != text.strip():
+        return False
     if "\n" in text or "\r" in text:
         return False
     return True
